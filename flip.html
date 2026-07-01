@@ -54,8 +54,26 @@
   .back-vertical { background-size: cover; background-repeat: no-repeat; background-position: center; }
   .back-horizontal { background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #0e0e12; }
 
-  @media (max-width: 600px) {
-    .deck { flex-wrap: wrap; justify-content: center; max-width: 320px; }
+ @media (max-width: 600px) {
+    /* 데크(카드 묶음)가 화면 너비를 채우고 2x2로 배치되게 함 */
+    .deck { 
+      flex-wrap: wrap; 
+      justify-content: center; 
+      max-width: 340px; 
+      gap: 15px; 
+    }
+    
+    /* 카드 크기 축소 */
+    .card-wrap { 
+      width: 140px; 
+      height: 210px; 
+    }
+
+    /* 제목 크기 조정 */
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
   }
 </style>
 </head>

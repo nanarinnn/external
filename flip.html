@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>카드 뒤집기 | YUYEON ONLY</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One:wght@300;400;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0e0e12;
+    --card-w: 160px;
+    --card-h: 240px;
+    --radius: 16px;
+    --gap: 20px;
+  }
+
+  body {
+    min-height: 100vh;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-family: 'Bagel Fat One', cursive;
+    color: #fff;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    font-weight: 400;
+  }
+
+  /* 카드 스타일 */
+  .deck { display: flex; gap: var(--gap); perspective: 1200px; }
+  .card-wrap { width: var(--card-w); height: var(--card-h); perspective: 800px; cursor: pointer; }
+  .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform .65s cubic-bezier(.23,1,.32,1); border-radius: var(--radius); }
+  .card-inner.flipped { transform: rotateY(180deg); }
+  .face { position: absolute; inset: 0; border-radius: var(--radius); backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  
+  .front { 
+    background-image: url('back1.png'); /* 앞면 이미지 */
+    background-size: cover; 
+    background-position: center; 
+    border: 1px solid rgba(255,255,255,.08); 
+  }
+  
+  .back { transform: rotateY(180deg); }
+  .back-vertical { background-size: cover; background-repeat: no-repeat; background-position: center; }
+  .back-horizontal { background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #0e0e12; }
+
+  @media (max-width: 600px) {
+    .deck { flex-wrap: wrap; justify-content: center; max-width: 320px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>카드를 눌러보세요</h1>
+
+<div class="deck">
+  <div class="card-wrap" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="face front"></div>
+      <div class="face back back-vertical" style="background-image: url('front1.png');"></div>
+    </div>
+  </div>
+  <div class="card-wrap" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="face front"></div>
+      <div class="face back back-vertical" style="background-image: url('front2.png');"></div>
+    </div>
+  </div>
+  
+  <div class="card-wrap" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="face front"></div>
+      <div class="face back back-horizontal" style="background-image: url('front3.png');"></div>
+    </div>
+  </div>
+  <div class="card-wrap" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="face front"></div>
+      <div class="face back back-horizontal" style="background-image: url('front4.png');"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

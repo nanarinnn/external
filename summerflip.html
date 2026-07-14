@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>카드 뒤집기 | YUYEON ONLY</title>
+<style>
+  /* 1. 굵은 폰트(7Bold)와 보통 굵기(5Medium) 둘 다 불러오기 */
+  @font-face {
+    font-family: 'Paperlogy-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Paperlogy-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    min-height: 100vh;
+    background: #0e0e12;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    /* 여기서 보통 굵기(Medium)를 기본으로 적용 */
+    font-family: 'Paperlogy-Medium', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    /* 제목은 굵은(Bold) 폰트 적용 */
+    font-family: 'Paperlogy-Bold', sans-serif;
+    color: #fff;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+.back-btn {
+    position: absolute;
+    top: 30px; 
+    left: 30px;
+}
+
+.back-btn img { 
+    height: 60px; /* 원하는 높이로 조절하세요 */
+    width: auto; 
+    display: block;
+}
+
+  /* 나머지 레이아웃 코드 유지 */
+  .deck { display: flex; gap: 20px; perspective: 1200px; }
+  .card-wrap { width: 160px; height: 240px; perspective: 800px; cursor: pointer; }
+  .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform .65s cubic-bezier(.23,1,.32,1); border-radius: 16px; }
+  .card-inner.flipped { transform: rotateY(180deg); }
+  .face { position: absolute; inset: 0; border-radius: 16px; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  
+  .front { 
+    background-image: url('summerspecial/back_summer.png'); 
+    background-size: cover; 
+    background-position: center; 
+    border: 1px solid rgba(255,255,255,.08); 
+  }
+  
+  .back { transform: rotateY(180deg); }
+  .back-vertical { background-size: cover; background-repeat: no-repeat; background-position: center; }
+  .back-horizontal { background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #0e0e12; }
+
+@media (max-width: 600px) {
+    /* 레이아웃 겹침 방지: 위에서부터 배치하고 윗부분 여백 확보 */
+    body {
+      justify-content: flex-start; 
+      padding-top: 90px; 
+      padding-bottom: 40px; 
+    }
+
+    /* 홈 버튼 모바일 맞춤 크기 및 위치 조정 */
+    .back-btn {
+      top: 15px;
+      left: 15px;
+    }
+    .back-btn img {
+      height: 45px; 
+    }
+
+    /* 기존 카드 레이아웃 설정 유지 */
+    .deck { flex-wrap: wrap; justify-content: center; max-width: 340px; gap: 15px; }
+    .card-wrap { width: 140px; height: 210px; }
+    h1 { font-size: 1.8rem; margin-bottom: 2rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-btn">
+    <img src="button/home_button.png" alt="홈으로">
+</a>
+
+<h1>카드를 눌러보세요</h1>
+
+<div class="deck">
+  <div class="card-wrap" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="face front"></div>
+      <div class="face back back-vertical" style="background-image: url('summerspecial/front1_summer.png');"></div>
+    </div>
+  </div>
+  <div class="card-wrap" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="face front"></div>
+      <div class="face back back-vertical" style="background-image: url('summerspecial/front2_summer.png');"></div>
+    </div>
+  </div>
+  <div class="card-wrap" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="face front"></div>
+      <div class="face back back-horizontal" style="background-image: url('summerspecial/front3_summer.png');"></div>
+    </div>
+  </div>
+  <div class="card-wrap" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="face front"></div>
+      <div class="face back back-horizontal" style="background-image: url('summerspecial/front4_summer.png');"></div>
+    </div>
+      </div>
+  <div class="card-wrap" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="face front"></div>
+      <div class="face back back-horizontal" style="background-image: url('summerspecial/front5_summer.png');"></div>
+    </div>
+      </div>
+  <div class="card-wrap" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="face front"></div>
+      <div class="face back back-horizontal" style="background-image: url('summerspecial/front6_summer.png');"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
